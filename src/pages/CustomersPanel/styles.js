@@ -118,8 +118,8 @@ export const CustomerWrapper = styled.div`
     align-items: center;
 
     .status-sign {
-      width: 12px;
-      height: 12px;
+      width: 14px;
+      height: 14px;
       border-radius: 50%;
       flex-shrink: 0;
       margin-right: 8px;
