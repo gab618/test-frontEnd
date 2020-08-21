@@ -9,7 +9,7 @@ import CustomersPanelLayout from "../_layouts/CustomersPanel";
 function ListCostumers() {
   function Customer({ status }) {
     const statusValue = {
-      "0": "Desavitvado",
+      "0": "Desativado",
       "1": "Ativo",
       "2": "Inativo",
       "3": "Aguardando ativação",

@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
 import ListCostumers from "./pages/ListCostumers";
+import NewCostumer from "./pages/NewCostumer";
 
 import GlobalStyles from "./styles/GlobalStyles";
 
@@ -12,7 +13,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" exact element={<ListCostumers />} />
-        <Route path="/new_user" element={<h1>New user</h1>} />
+        <Route path="/new_user" element={<NewCostumer />} />
       </Routes>
       <GlobalStyles />
     </BrowserRouter>
