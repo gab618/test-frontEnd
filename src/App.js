@@ -1,16 +1,22 @@
 import React from "react";
-import GlobalStyles from "./styles/GlobalStyles";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
-import CustomersPanel from "./pages/CustomersPanel";
+import ListCostumers from "./pages/ListCostumers";
+import NewCostumer from "./pages/NewCostumer";
+
+import GlobalStyles from "./styles/GlobalStyles";
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Header />
-      <CustomersPanel />
+      <Routes>
+        <Route path="/" exact element={<ListCostumers />} />
+        <Route path="/new_user" element={<NewCostumer />} />
+      </Routes>
       <GlobalStyles />
-    </>
+    </BrowserRouter>
   );
 }
 

@@ -7,9 +7,11 @@ export const Container = styled.div`
   background: var(--black);
   height: 74px;
 
-  > img {
-    height: 31px;
-    width: 82px;
-    cursor: pointer;
+  > a {
+    img {
+      height: 31px;
+      width: 82px;
+      cursor: pointer;
+    }
   }
 `;

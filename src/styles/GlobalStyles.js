@@ -33,5 +33,6 @@ export default createGlobalStyle`
     --disable: #D2D2D2;
 
     --main-color: #E29933;
+    --input-border: #8492a6;
   }
 `;

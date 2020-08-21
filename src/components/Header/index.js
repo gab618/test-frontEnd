@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import logo from "../../assets/uol-lg.png";
 import { Container } from "./styles";
@@ -6,7 +7,9 @@ import { Container } from "./styles";
 function Header() {
   return (
     <Container>
-      <img src={logo} alt="Uol host" />
+      <Link to="/">
+        <img src={logo} alt="Uol host" />
+      </Link>
     </Container>
   );
 }
