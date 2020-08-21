@@ -3,36 +3,6 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
-  max-width: 1076px;
-  margin: 0 auto;
-`;
-
-export const Title = styled.div`
-  margin-top: 99px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  padding-bottom: 28px;
-  border-bottom: 1px solid var(--border);
-
-  > img {
-    width: 37px;
-    height: 37px;
-    margin-right: 21px;
-  }
-
-  > h2 {
-    font-size: 28px;
-    line-height: 34px;
-    font-weight: 400;
-    color: var(--primary);
-  }
-`;
-
-export const Content = styled.div`
-  display: flex;
-  flex-direction: column;
   width: 100%;
   margin-top: 28px;
 
@@ -58,11 +28,13 @@ export const Content = styled.div`
       }
     }
 
-    > button {
-      width: 117px;
-      height: 35px;
-      font-size: 16px;
-      margin-right: 36px;
+    a > {
+      button {
+        width: 117px;
+        height: 35px;
+        font-size: 16px;
+        margin-right: 36px;
+      }
     }
   }
 

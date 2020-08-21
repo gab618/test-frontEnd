@@ -1,10 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import Button from "../../components/Button";
-import personIcon from "../../assets/Raster.png";
-import { Container, Title, Content, CustomerWrapper } from "./styles";
+import { Container, CustomerWrapper } from "./styles";
 
-function CustomersPanel() {
+import CustomersPanelLayout from "../_layouts/CustomersPanel";
+
+function ListCostumers() {
   function Customer({ status }) {
     const statusValue = {
       "0": "Desavitvado",
@@ -32,27 +34,25 @@ function CustomersPanel() {
   }
 
   return (
-    <Container>
-      <Title>
-        <img src={personIcon} alt="Painel de clientes" />
-        <h2>Painel de clientes</h2>
-      </Title>
-      <Content>
+    <CustomersPanelLayout>
+      <Container>
         <div className="description">
           <div className="description-text">
             <strong>Listagem de usuários</strong>
             <span>Escolha um cliente para visualizar os detalhes</span>
           </div>
-          <Button>Novo cliente</Button>
+          <Link to="new_user">
+            <Button>Novo cliente</Button>
+          </Link>
         </div>
 
         {[1, 2, 3, 0].map((c) => (
           <Customer status={c} />
         ))}
         <span>Exibindo 4 clientes</span>
-      </Content>
-    </Container>
+      </Container>
+    </CustomersPanelLayout>
   );
 }
 
-export default CustomersPanel;
+export default ListCostumers;
