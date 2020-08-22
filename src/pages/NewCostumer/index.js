@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 import { Form, Input, Select } from "@rocketseat/unform";
+import { toast } from "react-toastify";
 import Button from "../../components/Button";
 
 import { Container, ButtonsContainer } from "./styles";
@@ -27,11 +28,16 @@ function NewCostumer() {
   ];
 
   function handleSubmit({ name, email, cpf, phone, status }) {
-    localStorage.setItem(
-      "customers",
-      JSON.stringify([...customers, { name, email, cpf, phone, status }])
-    );
-    navigate("/");
+    try {
+      localStorage.setItem(
+        "customers",
+        JSON.stringify([...customers, { name, email, cpf, phone, status }])
+      );
+      toast.success("Usuário cadastrado");
+      navigate("/");
+    } catch (error) {
+      toast.error("Erro ao cadastrar usuário: " + error);
+    }
   }
 
   return (
