@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import Button from "../../components/Button";
@@ -7,26 +7,35 @@ import { Container, CustomerWrapper } from "./styles";
 import CustomersPanelLayout from "../_layouts/CustomersPanel";
 
 function ListCostumers() {
-  function Customer({ status }) {
+  const [customers, setCustomers] = useState([]);
+  useEffect(() => {
+    const localCustomers = localStorage.getItem("customers");
+    if (localCustomers) {
+      setCustomers(JSON.parse(localCustomers));
+    }
+  }, []);
+
+  function Customer({ customer }) {
     const statusValue = {
       "0": "Desativado",
       "1": "Ativo",
       "2": "Inativo",
       "3": "Aguardando ativação",
     };
+
     return (
       <CustomerWrapper>
         <div>
-          <strong>John Doe</strong>
-          <span>john_doe@test.com</span>
+          <strong>{customer.name}</strong>
+          <span>{customer.email}</span>
         </div>
         <div>
-          <strong>123.456.789-00</strong>
-          <span>(11) 9998-8745</span>
+          <strong>{customer.cpf}</strong>
+          <span>{customer.phone}</span>
         </div>
         <div className="status">
-          <div className={`status-sign status-${status}`}></div>
-          <span>{statusValue[status]}</span>
+          <div className={`status-sign status-${customer.status}`}></div>
+          <span>{statusValue[customer.status]}</span>
         </div>
         <Button outlined>Editar</Button>
       </CustomerWrapper>
@@ -46,10 +55,10 @@ function ListCostumers() {
           </Link>
         </div>
 
-        {[1, 2, 3, 0].map((c) => (
-          <Customer status={c} />
+        {customers.map((c) => (
+          <Customer customer={c} key={c.name} />
         ))}
-        <span>Exibindo 4 clientes</span>
+        <span>Exibindo {customers.length} clientes</span>
       </Container>
     </CustomersPanelLayout>
   );
