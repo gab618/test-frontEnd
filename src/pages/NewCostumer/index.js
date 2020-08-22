@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Form, Input, Select } from "@rocketseat/unform";
 import Button from "../../components/Button";
 
@@ -9,6 +9,16 @@ import { Container, ButtonsContainer } from "./styles";
 import CustomersPanelLayout from "../_layouts/CustomersPanel";
 
 function NewCostumer() {
+  const [customers, setCustomers] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const localCustomers = localStorage.getItem("customers");
+    if (localCustomers) {
+      setCustomers(JSON.parse(localCustomers));
+    }
+  }, []);
+
   const options = [
     { id: "0", title: "Desativado" },
     { id: "1", title: "Ativo" },
@@ -16,8 +26,12 @@ function NewCostumer() {
     { id: "3", title: "Aguardando ativação" },
   ];
 
-  function handleSubmit() {
-    alert("Sem API no momento :/");
+  function handleSubmit({ name, email, cpf, phone, status }) {
+    localStorage.setItem(
+      "customers",
+      JSON.stringify([...customers, { name, email, cpf, phone, status }])
+    );
+    navigate("/");
   }
 
   return (
@@ -31,9 +45,9 @@ function NewCostumer() {
         </div>
 
         <Form onSubmit={handleSubmit}>
-          <Input name="name" type="email" placeholder="Nome" />
-          <Input name="email" type="text" placeholder="E-mail" />
-          <Input name="id" type="text" placeholder="CPF" />
+          <Input name="name" type="text" placeholder="Nome" />
+          <Input name="email" type="email" placeholder="E-mail" />
+          <Input name="cpf" type="text" placeholder="CPF" />
           <Input name="phone" type="text" placeholder="Telefone" />
           <Select name="status" options={options} placeholder="Status" />
           <ButtonsContainer>
